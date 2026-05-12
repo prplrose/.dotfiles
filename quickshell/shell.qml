@@ -7,6 +7,7 @@ ShellRoot {
     id: root
 
     property Bar bar: Bar{}
+    property Battery battery: Battery{}
 
     GlobalShortcut {
         name: "bar"

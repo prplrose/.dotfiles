@@ -8,6 +8,7 @@ Scope{
     id: root
     PanelWindow{
         WlrLayershell.layer: WlrLayer.Overlay
+        mask: Region {}
         anchors{
             bottom: true
             right: true

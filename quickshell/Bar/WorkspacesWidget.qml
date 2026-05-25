@@ -12,7 +12,7 @@ Row{
             radius: 5
             color: modelData.active ? Colors.workspaceActive : modelData.urgent ? Colors.workspaceUrgent : Colors.workspace
             border.color: modelData.active ? Colors.workspaceActiveBorder : modelData.urgent ? Colors.workspaceUrgentBorder : Colors.workspaceBorder
-            property bool isLogo: modelData.name=="discord"
+            property bool isLogo: modelData.name=="special:discord"
             Text{
                 visible: !isLogo
                 text: modelData.name

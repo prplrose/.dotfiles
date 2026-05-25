@@ -1,0 +1,6 @@
+require("hyprland.keybinds.binds")
+require("hyprland.monitors")
+require("hyprland.autostart")
+require("hyprland.visuals")
+require("hyprland.input")
+require("hyprland.discord")

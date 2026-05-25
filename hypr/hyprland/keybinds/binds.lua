@@ -1,0 +1,23 @@
+require("hyprland.keybinds.default")
+
+hl.bind("code:133", hl.dsp.global("quickshell:bar"), {non_consuming=true, submap_universal=true})
+hl.bind("SUPER + code:133", hl.dsp.global("quickshell:bar"), {release=true, non_consuming=true, submap_universal=true})
+
+for i = 1, 10 do
+    local key = i % 10 -- 10 maps to key 0
+    hl.bind("SUPER + " .. key,             hl.dsp.focus({ workspace = i}), {submap_universal=true})
+    hl.bind("SUPER + " .. key,             hl.dsp.submap("reset"), {submap_universal=true})
+    hl.bind("SUPER + SHIFT + " .. key,     hl.dsp.window.move({ workspace = i }), {submap_universal=true})
+end
+
+hl.bind("SUPER + left", hl.dsp.focus({direction = "left"}), {submap_universal=true})
+hl.bind("SUPER + right", hl.dsp.focus({direction = "right"}), {submap_universal=true})
+hl.bind("SUPER + up", hl.dsp.focus({direction = "up"}), {submap_universal=true})
+hl.bind("SUPER + down", hl.dsp.focus({direction = "down"}), {submap_universal=true})
+
+hl.bind("SUPER + SHIFT + left", hl.dsp.window.move({direction = "left"}), {submap_universal=true})
+hl.bind("SUPER + SHIFT + right", hl.dsp.window.move({direction = "right"}), {submap_universal=true})
+hl.bind("SUPER + SHIFT + up", hl.dsp.window.move({direction = "up"}), {submap_universal=true})
+hl.bind("SUPER + SHIFT + down", hl.dsp.window.move({direction = "down"}), {submap_universal=true})
+
+hl.bind("SUPER + SHIFT + Delete", hl.dsp.window.kill(), {submap_universal=true})

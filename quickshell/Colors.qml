@@ -10,18 +10,18 @@ Singleton {
     property bool b_pope: false
     property bool pope: f_pope()
 
-    property color bar: pope ? "#f5ec86" : "#24112d"
+    property color bar: pope ? "#f5ec86" : "#241824"
 
     property color clockOutline: pope ? "transparent" : "#88474747"
     property color clock: pope ? "#121212" : "#ffffff"
 
     property color battery: "#ffffff"
 
-    property color workspace: pope? "#655b00" :"#4f3466"
+    property color workspace: pope? "#655b00" :"#492E49"
     property color workspaceText: "#ffffff"
     property color workspaceBorder: "#b99bd5"
     
-    property color workspaceActive: pope ? "#fefac5" : "#cf62e7"
+    property color workspaceActive: pope ? "#fefac5" : "#B282B2"
     property color workspaceActiveText: "#19191a"
     property color workspaceActiveBorder: "#b99bd5"
 

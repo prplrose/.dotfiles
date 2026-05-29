@@ -9,8 +9,8 @@ hl.config({
         gaps_out = 0,
         resize_on_border = true,
         col = {
-            active_border = {colors = {"rgba(9156ccee)","rgba(9156ccee)"}},
-            inactive_border = {colors ={"rgba(595959aa)"}},
+            active_border = {colors = {"rgb(492E49)"}},
+            inactive_border = {colors ={"rgba(00000000)"}},
         },
         allow_tearing = false,
         no_focus_fallback = false,

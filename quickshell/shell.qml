@@ -8,6 +8,7 @@ ShellRoot {
 
     property Bar bar: Bar{}
     property Battery battery: Battery{}
+    property Audio audio: Audio{}
 
     GlobalShortcut {
         name: "bar"

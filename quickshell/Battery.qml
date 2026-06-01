@@ -41,9 +41,9 @@ Scope{
                 implicitWidth: parent.width
                 
                 gradient: Gradient{
-                    GradientStop { position: 3/parent.width+0.005; color: Colors.workspace}
+                    GradientStop { position: 0; color: Colors.workspace}
                     GradientStop { position: 1-UPower.displayDevice.percentage-0.005; color: Colors.workspace}
-                    GradientStop { position: 1-UPower.displayDevice.percentage+0.005; color: Colors.workspace}
+                    GradientStop { position: 1-UPower.displayDevice.percentage+0.005; color: "#00000000"}
                     GradientStop { position: 1.0; color: "#00000000" }
                     orientation: Gradient.Horizontal
                 }

@@ -10,6 +10,12 @@ for i = 1, 10 do
     hl.bind("SUPER + SHIFT + " .. key,     hl.dsp.window.move({ workspace = i }), {submap_universal=true})
 end
 
+hl.bind("SUPER + mouse_down", hl.dsp.focus({ workspace = "e+1" }), {submap_universal=true})
+hl.bind("SUPER + mouse_up",   hl.dsp.focus({ workspace = "e-1" }), {submap_universal=true})
+
+hl.bind("SUPER + mouse:272", hl.dsp.window.drag(),   { mouse = true, submap_universal=true })
+hl.bind("SUPER + mouse:273", hl.dsp.window.resize(), { mouse = true, submap_universal=true })
+
 hl.bind("SUPER + left", hl.dsp.focus({direction = "left"}), {submap_universal=true})
 hl.bind("SUPER + right", hl.dsp.focus({direction = "right"}), {submap_universal=true})
 hl.bind("SUPER + up", hl.dsp.focus({direction = "up"}), {submap_universal=true})

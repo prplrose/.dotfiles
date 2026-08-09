@@ -39,11 +39,29 @@ Scope{
                 id: battery_bar
                 implicitHeight: 3
                 implicitWidth: parent.width
-                
+                property real time: 1
+
+                function get_percent(){
+                    if (UPower.displayDevice.onBattery){
+                        return 1-UPower.displayDevice.percentage
+                    }
+                    let t = battery_bar.time
+                    t = Math.sin(t)+Math.sin(2*t)/5
+                    t *= -0.001
+                    return 1-UPower.displayDevice.percentage + t
+                }
+
+                Timer{
+                    interval: 30;
+                    running: true;
+                    repeat: true;
+                    onTriggered: battery_bar.time=battery_bar.time+0.05;
+                }
+
                 gradient: Gradient{
                     GradientStop { position: 0; color: Colors.workspace}
-                    GradientStop { position: 1-UPower.displayDevice.percentage-0.005; color: Colors.workspace}
-                    GradientStop { position: 1-UPower.displayDevice.percentage+0.005; color: "#00000000"}
+                    GradientStop { position: battery_bar.get_percent()-0.005; color: Colors.workspace}
+                    GradientStop { position: battery_bar.get_percent()+0.005; color: "#00000000"}
                     GradientStop { position: 1.0; color: "#00000000" }
                     orientation: Gradient.Horizontal
                 }

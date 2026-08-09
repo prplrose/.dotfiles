@@ -50,8 +50,9 @@ Scope {
 				bottom: true
 				left: true
 			}
-			color: "transparent"
+			color: Colors.workspace
 			implicitWidth: screen.width
+			implicitHeight: 3
 			Rectangle{
 				anchors {
 					left: parent.left

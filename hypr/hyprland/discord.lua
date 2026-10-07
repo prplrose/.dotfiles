@@ -20,6 +20,6 @@ hl.window_rule({
     },
     workspace = "special:discord",
     no_initial_focus = true,
-    opacity = 0.8,
+    opacity = 0.85,
     no_screen_share = true,
 })

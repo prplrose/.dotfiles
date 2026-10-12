@@ -16,11 +16,11 @@ Scope{
             property real s: 1
             property real p: UPower.displayDevice.percentage
             property real multiplier: Math.max(0,Math.min(1,(p-ht)/(-s*p-ht+lt+s*lt)))
-            opacity: Math.sin(time)*multiplier
+            opacity: UPower.onBattery ? Math.sin(time)*multiplier : 0
             source: "./BatteryVignette.svg"
-            width: parent.width-4
-            height: parent.height-4
-            fillMode: Image.PreserveAspectFit
+            width: parent.width
+            height: parent.height
+            fillMode: Image.Stretch
             mipmap: true
             anchors{
                 verticalCenter: parent.verticalCenter

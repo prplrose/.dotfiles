@@ -9,6 +9,7 @@ ShellRoot {
     property Bar bar: Bar{}
     property Battery battery: Battery{}
     property Audio audio: Audio{}
+    property BatteryVignette batteryVignette: BatteryVignette{}
 
     GlobalShortcut {
         name: "bar"

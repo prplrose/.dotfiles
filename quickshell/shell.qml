@@ -16,12 +16,10 @@ ShellRoot {
         description: "test"
 
         onPressed: {
-            bar.visible = true
             bar.barState = "enabled"
         }
 
         onReleased: {
-            bar.visible = false
             bar.barState = "disabled"
         }
     }

@@ -8,18 +8,14 @@ import qs
 
 Scope{
     id: root
-    // required property color color
-    property bool visible: false
     property string barState: "disabled"
 
-    // Time{id: timeSource}
     Variants{
         model: Quickshell.screens
         PanelWindow {
+            mask: Region{}
             
             WlrLayershell.layer: WlrLayer.Overlay
-            // HyprlandWindow.opacity: 0.8
-            // HyprlandWindow.visibleMask: Region{width: 1920; height: 1080}
             required property var modelData
             screen: modelData
             visible: root.visible
@@ -48,7 +44,6 @@ Scope{
                         verticalCenter: parent.verticalCenter
                     }
                 }
-
                 WorkspacesWidget{
                     anchors{
                         verticalCenter: parent.verticalCenter
@@ -80,15 +75,11 @@ Scope{
                         PropertyAnimation{
                             target: barRect
                             properties: "y"
-                            duration: 150
+                            duration: 85
                         }
                     }
                 ]
-
-            }
-
-            
+            }       
         }
-    }
-    
+    }   
 }

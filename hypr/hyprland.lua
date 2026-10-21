@@ -1,3 +1,4 @@
+hl.exec_cmd("hyprpm reload")
 require("hyprland.keybinds.binds")
 require("hyprland.monitors")
 require("hyprland.autostart")

@@ -14,7 +14,7 @@ hl.config({
         },
         allow_tearing = false,
         no_focus_fallback = false,
-        layout = "dwindle"
+        layout = "hy3"
     },
     decoration = {
         rounding = 1,

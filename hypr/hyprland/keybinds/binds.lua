@@ -1,7 +1,7 @@
 local hy3 = hl.plugin.hy3
 require("hyprland.keybinds.default")
 
-hl.bind("code:133", hl.dsp.global("quickshell:bar"), {non_consuming=true, submap_universal=true})
+hl.bind("SUPER + code:133", hl.dsp.global("quickshell:bar"), {non_consuming=true, submap_universal=true})
 hl.bind("SUPER + code:133", hl.dsp.global("quickshell:bar"), {release=true, non_consuming=true, submap_universal=true})
 
 for i = 1, 10 do

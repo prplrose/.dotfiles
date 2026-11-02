@@ -45,3 +45,5 @@ hl.bind("XF86AudioPrev", hl.dsp.exec_cmd("playerctl previous"),   { locked = tru
 hl.bind("XF86AudioNext", hl.dsp.exec_cmd("playerctl next"),       { locked = true })
 
 hl.bind("SUPER + SHIFT + S", hl.dsp.exec_cmd("hyprshot -m region -z --clipboard-only"), {submap_universal=true})
+
+hl.bind("SUPER + L", hl.dsp.exec_cmd("hyprlock"), {submap_universal=true})

@@ -16,7 +16,8 @@ Scope{
         color: "transparent"
         implicitWidth: screen.width
         Rectangle{
-            id: rere
+            id: battery_bar
+            property real animation_time: 1
             anchors {
                 right: parent.right
                 bottom: parent.bottom
@@ -24,45 +25,52 @@ Scope{
             implicitHeight:3
             implicitWidth: parent.width
             gradient: Gradient{
-                GradientStop { position: 0.19; color: "#5BCFFB" }
-                GradientStop { position: 0.21; color: "#F5ABB9" }
-                GradientStop { position: 0.39; color: "#F5ABB9" }
-                GradientStop { position: 0.41; color: "#FFFFFF" }
-                GradientStop { position: 0.59; color: "#FFFFFF" }
-                GradientStop { position: 0.61; color: "#F5ABB9" }
-                GradientStop { position: 0.79; color: "#F5ABB9" }
-                GradientStop { position: 0.81; color: "#5BCFFB" }
-                GradientStop { position: 1.0; color: "#5BCFFB" }
+                GradientStop { position: battery_bar.animated(0.01); color: "#5BCFFB" }
+                GradientStop { position: battery_bar.animated(0.19); color: "#5BCFFB" }
+                GradientStop { position: battery_bar.animated(0.21); color: "#F5ABB9" }
+                GradientStop { position: battery_bar.animated(0.39); color: "#F5ABB9" }
+                GradientStop { position: battery_bar.animated(0.41); color: "#FFFFFF" }
+                GradientStop { position: battery_bar.animated(0.59); color: "#FFFFFF" }
+                GradientStop { position: battery_bar.animated(0.61); color: "#F5ABB9" }
+                GradientStop { position: battery_bar.animated(0.79); color: "#F5ABB9" }
+                GradientStop { position: battery_bar.animated(0.81); color: "#5BCFFB" }
+                GradientStop { position: battery_bar.animated(0.99); color: "#5BCFFB" }
                 orientation: Gradient.Horizontal
             }
+
+            function animated(position){
+                if (UPower.displayDevice.state != UPowerDeviceState.Charging){
+                    return position;
+                }
+                let scaled = (5*position/4) - (1/12)
+                scaled = Math.min(1, Math.max(0,scaled))
+                return 1-(scaled+battery_bar.animation_time)%1;
+            }
+
+            Timer{
+                interval: 30;
+                running: UPower.displayDevice.state == UPowerDeviceState.Charging;
+                repeat: true;
+                onTriggered: battery_bar.animation_time+=UPower.displayDevice.changeRate/5000;
+            }
+
             Rectangle{
-                id: battery_bar
+                id: depletion_bar
                 implicitHeight: 3
                 implicitWidth: parent.width
-                property real time: 1
 
                 function get_percent(){
-                    if (UPower.displayDevice.onBattery){
-                        return 1-UPower.displayDevice.percentage
+                    if (UPower.displayDevice.state == UPowerDeviceState.Unknown){
+                        return 1
                     }
-                    let t = battery_bar.time
-                    t = Math.sin(t)+Math.sin(2*t)/5
-                    t *= -0.001
-                    return 1-UPower.displayDevice.percentage + t
-                }
-
-                Timer{
-                    interval: 30;
-                    running: true;
-                    repeat: true;
-                    onTriggered: battery_bar.time=battery_bar.time+0.05;
+                    return UPower.displayDevice.percentage
                 }
 
                 gradient: Gradient{
-                    GradientStop { position: 0; color: Colors.workspace}
-                    GradientStop { position: battery_bar.get_percent()-0.005; color: Colors.workspace}
-                    GradientStop { position: battery_bar.get_percent()+0.005; color: "#00000000"}
-                    GradientStop { position: 1.0; color: "#00000000" }
+                    GradientStop { position: 0; color: depletion_bar.get_percent()==1 ? "transparent" : Colors.workspace}
+                    GradientStop { position: 1.0-depletion_bar.get_percent()-0.005; color: depletion_bar.get_percent()==1 ? "transparent" : Colors.workspace}
+                    GradientStop { position: 1.0-depletion_bar.get_percent()+0.005; color: "transparent"}
+                    GradientStop { position: 1.0; color: "transparent" }
                     orientation: Gradient.Horizontal
                 }
             }

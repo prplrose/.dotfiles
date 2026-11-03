@@ -1,4 +1,3 @@
-local hy3 = hl.plugin.hy3
 require("hyprland.keybinds.default")
 
 hl.bind("SUPER + code:133", hl.dsp.global("quickshell:bar"), {non_consuming=true, submap_universal=true})
@@ -22,11 +21,10 @@ hl.bind("SUPER + right", hl.dsp.focus({direction = "right"}), {submap_universal=
 hl.bind("SUPER + up", hl.dsp.focus({direction = "up"}), {submap_universal=true})
 hl.bind("SUPER + down", hl.dsp.focus({direction = "down"}), {submap_universal=true})
 
-hl.bind("SUPER + SHIFT + left", hy3.move_window("left"), {submap_universal=true})
--- hl.bind("SUPER + c", hy3.debug_nodes(), {submap_universal=true})
-hl.bind("SUPER + SHIFT + right", hy3.move_window("right"), {submap_universal=true})
-hl.bind("SUPER + SHIFT + up", hy3.move_window("up"), {submap_universal=true})
-hl.bind("SUPER + SHIFT + down", hy3.move_window("down"), {submap_universal=true})
+hl.bind("SUPER + SHIFT + left", hl.dsp.window.move({direction = "left"}), {submap_universal=true})
+hl.bind("SUPER + SHIFT + right", hl.dsp.window.move({direction = "right"}), {submap_universal=true})
+hl.bind("SUPER + SHIFT + up", hl.dsp.window.move({direction = "up"}), {submap_universal=true})
+hl.bind("SUPER + SHIFT + down", hl.dsp.window.move({direction = "down"}), {submap_universal=true})
 
 hl.bind("SUPER + SHIFT + Delete", hl.dsp.window.kill(), {submap_universal=true})
 
